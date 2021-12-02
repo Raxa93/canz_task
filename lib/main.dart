@@ -3,6 +3,7 @@
 import 'package:canz_task/Screens/Contacts.dart';
 import 'package:canz_task/Screens/Home.dart';
 import 'package:canz_task/Screens/settings.dart';
+import 'package:canz_task/appconfig.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,7 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  AppConfig _ac;
   int index = 0;
   final screens = [HomeScreen(), Contacts(), settings()];
 
@@ -39,6 +41,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
+    _ac = AppConfig(context);
     return Scaffold(
         appBar: AppBar(
           leading: Padding(
@@ -49,8 +52,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: InkWell(
                   splashColor: Colors.red,
                   onTap: () {},
-                  child:
-                      SizedBox(width: 20, height: 20, child: Icon(Icons.menu)),
+                  child: SizedBox(
+                      width: _ac.rWP(10),
+                      height: _ac.rHP(10),
+                      child: Icon(Icons.menu)),
                 ),
               ),
             ),
@@ -71,8 +76,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     splashColor: Colors.red,
                     onTap: () {},
                     child: SizedBox(
-                        width: 50,
-                        height: 50,
+                        width: _ac.rWP(10),
+                        height: _ac.rHP(10),
                         child:
                             Icon(Icons.no_encryption_gmailerrorred_outlined)),
                   ),
@@ -90,7 +95,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             color: Colors.blue,
             items: items,
             index: index,
-            height: 50,
+            height: _ac.rHP(10),
             onTap: (index) => setState(() {
               this.index = index;
             }),

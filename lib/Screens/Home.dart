@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable
 
+import 'package:canz_task/appconfig.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,8 +11,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  AppConfig _ac;
   @override
   Widget build(BuildContext context) {
+    _ac = AppConfig(context);
     final name = ['Hammad', 'Azhar', 'Bilal', 'Ahmad', 'Imran', 'Nisar'];
     final contact = [
       '+92-345478585',
@@ -29,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             TextField(
               style: TextStyle(
-                height: 0.2,
+                height: _ac.rHP(0.2),
               ),
               decoration: InputDecoration(
                 filled: true,
@@ -41,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: _ac.rHP(3)),
             Expanded(
               child: ListTileTheme(
                 iconColor: Colors.blue,
@@ -49,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: name.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      height: 110,
+                      height: _ac.rHP(19),
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
                         child: Card(
